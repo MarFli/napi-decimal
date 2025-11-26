@@ -1,6 +1,6 @@
 {
     "name": "@martinflisar/napi-decimal",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Node Rust binding for handling decimal numbers",
     "main": "index.js",
     "files": [
@@ -29,7 +29,8 @@
         "node": ">= 10.0.0"
     },
     "publishConfig": {
-        "registry": "https://registry.npmjs.org/"
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
     },
     "scripts": {
         "setup": "npm install && yarn install",
