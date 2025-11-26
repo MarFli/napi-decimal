@@ -1,8 +1,12 @@
 {
     "name": "@martinflisar/napi-decimal",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "description": "Node Rust binding for handling decimal numbers",
     "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MarFli/napi-decimal"
+    },
     "files": [
         "index.d.ts",
         "index.js"
