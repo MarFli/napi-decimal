@@ -29,6 +29,7 @@
         "node": ">= 10.0.0"
     },
     "scripts": {
+        "setup": "npm install && yarn install",
         "artifacts": "napi artifacts",
         "build": "napi build --platform --release",
         "build:debug": "napi build --platform",
@@ -36,6 +37,7 @@
         "preversion": "napi build --platform && git add ."
     },
     "devDependencies": {
+        "@napi-rs/cli": "^3.2.0",
         "tsx": "^4.20.6",
         "typescript": "^5.9.2"
     }
