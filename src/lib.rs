@@ -2,6 +2,7 @@
 
 use napi_derive::napi;
 
+/// Signature enum that represents the sign of a number.
 #[derive(Debug)]
 #[napi(string_enum)]
 pub enum Signature {
@@ -10,6 +11,7 @@ pub enum Signature {
     Zero,
 }
 
+/// A decimal representation of a number.
 #[derive(Debug)]
 #[napi]
 pub struct Decimal {
@@ -20,6 +22,10 @@ pub struct Decimal {
 
 #[napi]
 impl Decimal {
+    /// Creates a new decimal number.
+    ///
+    /// # Return
+    /// This function returns null if number is not valid.
     #[napi]
     pub fn new(number: String) -> Option<Decimal> {
         if !Self::is_valid(&number) {
@@ -110,5 +116,52 @@ impl Decimal {
         }
 
         digits
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn assert_invalid() {
+        let invalid: Option<Decimal> = Decimal::new(String::from(""));
+        assert!(invalid.is_none());
+
+        let invalid: Option<Decimal> = Decimal::new(String::from("text"));
+        assert!(invalid.is_none());
+
+        let invalid: Option<Decimal> = Decimal::new(String::from("+.67"));
+        assert!(invalid.is_none());
+
+        let invalid: Option<Decimal> = Decimal::new(String::from("-.566"));
+        assert!(invalid.is_none());
+
+        let invalid: Option<Decimal> = Decimal::new(String::from(".566"));
+        assert!(invalid.is_none());
+
+        let invalid: Option<Decimal> = Decimal::new(String::from("566."));
+        assert!(invalid.is_none());
+
+        let invalid: Option<Decimal> = Decimal::new(String::from("+x"));
+        assert!(invalid.is_none());
+
+        let invalid: Option<Decimal> = Decimal::new(String::from("-y"));
+        assert!(invalid.is_none());
+
+        let invalid: Option<Decimal> = Decimal::new(String::from("+67.566z"));
+        assert!(invalid.is_none());
+
+        let invalid: Option<Decimal> = Decimal::new(String::from("-99084d54.566"));
+        assert!(invalid.is_none());
+    }
+
+    #[test]
+    fn pass_valid() {
+        let zero: Option<Decimal> = Decimal::new(String::from("0"));
+        assert!(zero.is_some());
+
+        let valid: Option<Decimal> = Decimal::new(String::from("+1234.56789"));
+        assert!(valid.is_some());
     }
 }
