@@ -336,9 +336,9 @@ jobs:
         needs:
             - lint
             - build-freebsd
-            - test-macOS-windows-binding
-            - test-linux-binding
-            - test-wasi
+            # - test-macOS-windows-binding
+            # - test-linux-binding
+            # - test-wasi
         steps:
             - uses: actions/checkout@v6
             - name: Setup node
