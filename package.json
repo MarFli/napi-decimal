@@ -1,6 +1,6 @@
 {
     "name": "@martinflisar/napi-decimal",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "Node Rust binding for handling decimal numbers",
     "main": "index.js",
     "files": [
@@ -37,7 +37,7 @@
         "artifacts": "napi artifacts",
         "build": "napi build --platform --release",
         "build:debug": "napi build --platform",
-        "prepublishOnly": "napi prepublish -t npm --skip-provenance",
+        "prepublishOnly": "napi prepublish -t npm",
         "preversion": "napi build --platform && git add ."
     },
     "devDependencies": {
